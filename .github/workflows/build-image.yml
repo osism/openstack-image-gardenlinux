@@ -18,8 +18,17 @@ jobs:
       - uses: actions/checkout@v2
       - uses: docker/setup-qemu-action@v1
       - uses: docker/setup-buildx-action@v1
-      - run: |
-          git clone https://github.com/gardenlinux/gardenlinux.git
-      - run: |
-          make openstack
+      - run: git clone https://github.com/gardenlinux/gardenlinux.git
+      - run: make openstack
         working-directory: gardenlinux
+      - run: sudo apt-get install -y qemu-utils lftp
+      - run: mkdir gardenlinux/.build/openstack/upload
+      - run: qemu-img convert -f raw -O qcow2 $(date +'%Y%m%d')/amd64/bullseye/rootfs.raw upload/$(date +'%Y%m%d')-gardenlinux-amd64.qcow2
+        working-directory: gardenlinux/.build/openstack
+      - run: |
+          lftp -u $FTP_USERNAME,$FTP_PASSWORD -e "set sftp:auto-confirm yes; put -O gardenlinux upload/$(date +'%Y%m%d')-gardenlinux-amd64.qcow2; exit;" $FTP_SERVER
+        working-directory: gardenlinux/.build/openstack
+        env:
+          FTP_SERVER: sftp://${{ secrets.SFTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.SFTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
