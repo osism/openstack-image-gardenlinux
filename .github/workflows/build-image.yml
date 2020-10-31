@@ -14,19 +14,27 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        version:
+          - "184.0"
+
     steps:
       - uses: actions/checkout@v2
       - uses: docker/setup-qemu-action@v1
       - uses: docker/setup-buildx-action@v1
-      - run: git clone https://github.com/gardenlinux/gardenlinux.git
-      - run: make openstack
+      - run: git clone --depth 1 --branch ${{ matrix.version }} https://github.com/gardenlinux/gardenlinux.git
+      # workaround for missing 54dbe2db129e9ba063916f4d10763b06cd30a660 in 184.0
+      - run: mkdir .build
+        working-directory: gardenlinux
+      - run: make openstack BUILDKEY=info@23technologies.cloud
         working-directory: gardenlinux
       - run: sudo apt-get install -y qemu-utils lftp
       - run: mkdir gardenlinux/.build/openstack/upload
-      - run: qemu-img convert -f raw -O qcow2 $(date +'%Y%m%d')/amd64/bullseye/rootfs.raw upload/$(date +'%Y%m%d')-gardenlinux-amd64.qcow2
+      - run: qemu-img convert -f raw -O qcow2 $(date +'%Y%m%d')/amd64/bullseye/rootfs.raw upload/gardenlinux-amd64.${{ matrix.version }}.qcow2
         working-directory: gardenlinux/.build/openstack
       - run: |
-          lftp -u $FTP_USERNAME,$FTP_PASSWORD -e "set sftp:auto-confirm yes; put -O gardenlinux upload/$(date +'%Y%m%d')-gardenlinux-amd64.qcow2; exit;" $FTP_SERVER
+          lftp -u $FTP_USERNAME,$FTP_PASSWORD -e "set sftp:auto-confirm yes; put -O gardenlinux upload/gardenlinux-amd64.${{ matrix.version }}.qcow2; exit;" $FTP_SERVER
         working-directory: gardenlinux/.build/openstack
         env:
           FTP_SERVER: sftp://${{ secrets.SFTP_SERVER }}
