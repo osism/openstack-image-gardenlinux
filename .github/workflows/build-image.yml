@@ -24,9 +24,6 @@ jobs:
       - uses: docker/setup-qemu-action@v1
       - uses: docker/setup-buildx-action@v1
       - run: git clone --depth 1 --branch ${{ matrix.version }} https://github.com/gardenlinux/gardenlinux.git
-      # workaround for missing 54dbe2db129e9ba063916f4d10763b06cd30a660 in 184.0
-      - run: mkdir .build
-        working-directory: gardenlinux
       - run: make openstack BUILDKEY=info@23technologies.cloud
         working-directory: gardenlinux
       - run: sudo apt-get install -y qemu-utils lftp
