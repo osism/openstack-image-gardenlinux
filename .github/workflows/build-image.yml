@@ -17,13 +17,13 @@ jobs:
     strategy:
       matrix:
         version:
-          - "184.0"
+          - 184
 
     steps:
       - uses: actions/checkout@v2
       - uses: docker/setup-qemu-action@v1
       - uses: docker/setup-buildx-action@v1
-      - run: git clone --depth 1 --branch ${{ matrix.version }} https://github.com/gardenlinux/gardenlinux.git
+      - run: git clone --depth 1 --branch rel-${{ matrix.version }} https://github.com/gardenlinux/gardenlinux.git
       - run: make openstack BUILDKEY=info@23technologies.cloud
         working-directory: gardenlinux
       - run: sudo apt-get install -y qemu-utils lftp
