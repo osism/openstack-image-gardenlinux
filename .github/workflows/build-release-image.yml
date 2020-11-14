@@ -1,0 +1,41 @@
+---
+name: Build release image
+
+on:
+  push:
+    paths:
+      - .github/workflows/build-release-image.yml
+    branches:
+      - master
+
+jobs:
+
+  build-release-image:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        version:
+          - 184
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: docker/setup-qemu-action@v1
+      - uses: docker/setup-buildx-action@v1
+      - run: git clone --depth 1 --branch rel-${{ matrix.version }} https://github.com/gardenlinux/gardenlinux.git
+      - run: |
+          if curl --output /dev/null --silent --head --fail "https://files.23technologies.dev/gardenlinux/gardenlinux-amd64.${{ matrix.version }}.qcow2"; then
+            echo "Release was already built, no new build necessary."
+          else
+            make openstack BUILDKEY=info@23technologies.cloud
+            sudo apt-get install -y qemu-utils lftp
+            mkdir gardenlinux/.build/openstack/upload
+            qemu-img convert -f raw -O qcow2 .build/openstack/$(date +'%Y%m%d')/amd64/bullseye/rootfs.raw .build/openstack/upload/gardenlinux-amd64.${{ matrix.version }}.qcow2
+            lftp -u $FTP_USERNAME,$FTP_PASSWORD -e "set sftp:auto-confirm yes; put -O gardenlinux gardenlinux/.build/openstack/upload/gardenlinux-amd64.${{ matrix.version }}.qcow2; exit;" $FTP_SERVER
+          fi
+        working-directory: gardenlinux
+        env:
+          FTP_SERVER: sftp://${{ secrets.SFTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.SFTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
