@@ -1,7 +1,7 @@
 ---
 name: Build release image
 
-on:
+"on":
   push:
     paths:
       - .github/workflows/build-release-image.yml
@@ -9,9 +9,7 @@ on:
       - master
 
 jobs:
-
   build-release-image:
-
     runs-on: ubuntu-latest
 
     strategy:

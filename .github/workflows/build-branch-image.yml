@@ -1,7 +1,7 @@
 ---
 name: Build branch image
 
-on:
+"on":
   schedule:
     - cron: "0 0 * * *"
   push:
@@ -11,9 +11,7 @@ on:
       - master
 
 jobs:
-
   build-branch-image:
-
     runs-on: ubuntu-latest
 
     strategy:
