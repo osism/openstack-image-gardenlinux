@@ -2,6 +2,7 @@
 name: Build release image
 
 "on":
+  workflow_dispatch:
   push:
     paths:
       - .github/workflows/build-release-image.yml
