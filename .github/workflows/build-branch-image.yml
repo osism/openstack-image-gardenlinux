@@ -2,13 +2,14 @@
 name: Build branch image
 
 "on":
+  workflow_dispatch:
   schedule:
     - cron: "0 0 * * *"
   push:
     paths:
       - .github/workflows/build-branch-image.yml
     branches:
-      - master
+      - main
 
 jobs:
   build-branch-image:
@@ -26,14 +27,6 @@ jobs:
       - run: git clone --depth 1 --branch ${{ matrix.branch }} https://github.com/gardenlinux/gardenlinux.git
       - run: make openstack BUILDKEY=info@23technologies.cloud
         working-directory: gardenlinux
-      - run: sudo apt-get install -y qemu-utils lftp
       - run: mkdir gardenlinux/.build/openstack/upload
       - run: qemu-img convert -f raw -O qcow2 $(date +'%Y%m%d')/amd64/bullseye/rootfs.raw upload/gardenlinux-amd64.${{ matrix.branch }}.qcow2
         working-directory: gardenlinux/.build/openstack
-      - run: |
-          lftp -u $FTP_USERNAME,$FTP_PASSWORD -e "set sftp:auto-confirm yes; put -O gardenlinux upload/gardenlinux-amd64.${{ matrix.branch }}.qcow2; exit;" $FTP_SERVER
-        working-directory: gardenlinux/.build/openstack
-        env:
-          FTP_SERVER: sftp://${{ secrets.SFTP_SERVER }}
-          FTP_USERNAME: ${{ secrets.SFTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
