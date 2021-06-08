@@ -10,6 +10,9 @@ name: Build branch image
       - .github/workflows/build-branch-image.yml
     branches:
       - main
+  pull_request:
+    paths:
+      - .github/workflows/build-branch-image.yml
 
 jobs:
   build-branch-image:
@@ -25,7 +28,9 @@ jobs:
       - uses: docker/setup-qemu-action@v1
       - uses: docker/setup-buildx-action@v1
       - run: git clone --depth 1 --branch ${{ matrix.branch }} https://github.com/gardenlinux/gardenlinux.git
-      - run: make openstack BUILDKEY=info@23technologies.cloud
+      - name: Build image
+        shell: 'script -q -e -c "bash {0}"'
+        run: make openstack BUILDKEY=info@23technologies.cloud
         working-directory: gardenlinux
       - run: mkdir gardenlinux/.build/openstack/upload
       - run: sudo apt-get install -y qemu-utils
