@@ -32,5 +32,5 @@ jobs:
         working-directory: gardenlinux
       - run: mkdir gardenlinux/.build/openstack/upload
       - run: sudo apt-get install -y qemu-utils
-      - run: qemu-img convert -f raw -O qcow2 $(date +'%Y%m%d')/amd64/bullseye/rootfs.raw upload/gardenlinux-amd64.${{ matrix.release }}.qcow2
+      - run: qemu-img convert -f raw -O qcow2 $(ls -1 | head -n 1)/amd64/bullseye/rootfs.raw upload/gardenlinux-amd64.${{ matrix.release }}.qcow2
         working-directory: gardenlinux/.build/openstack
