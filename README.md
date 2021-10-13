@@ -7,6 +7,7 @@ When a new tag/release is made on the [gardenlinux/gardenlinux](https://github.c
 repository, a new image is built and made available once.
 
 * https://images.osism.tech/openstack-image-gardenlinux/gardenlinux-amd64.318.8.qcow2
+* https://images.osism.tech/openstack-image-gardenlinux/gardenlinux-amd64.318.9.qcow2
 
 Every night a new image is created for the main branch.
 
