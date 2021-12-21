@@ -34,6 +34,7 @@ jobs:
         run: make openstack BUILDKEY=info@osism.tech
         working-directory: gardenlinux
       - run: find . -name rootfs.qcow2  -exec cp {} gardenlinux-amd64.${{ matrix.release }}.qcow2 \;
+        working-directory: gardenlinux
       - run: |
           wget https://dl.min.io/client/mc/release/linux-amd64/mc
           chmod +x mc
