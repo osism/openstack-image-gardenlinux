@@ -6,6 +6,8 @@ name: Build release image
   push:
     paths:
       - .github/workflows/build-release-image.yml
+    branches:
+      - main
   pull_request:
     paths:
       - .github/workflows/build-release-image.yml
@@ -17,26 +19,26 @@ jobs:
     strategy:
       matrix:
         release:
-          - "318.8"
+          - "576.1"
 
     steps:
       - uses: actions/checkout@v2
       - uses: docker/setup-qemu-action@v1
       - uses: docker/setup-buildx-action@v1
       - run: git clone --depth 1 --branch ${{ matrix.release }} https://github.com/gardenlinux/gardenlinux.git
+      - name: Disable rkhunter check
+        run: rm features/base/test/rkhunter.chroot
+        working-directory: gardenlinux
       - name: Build image
         shell: 'script -q -e -c "bash {0}"'
         run: make openstack BUILDKEY=info@osism.tech
         working-directory: gardenlinux
-      - run: mkdir gardenlinux/.build/openstack/upload
-      - run: sudo apt-get install -y qemu-utils
-      - run: qemu-img convert -f raw -O qcow2 $(ls -1 | head -n 1)/amd64/bullseye/rootfs.raw upload/gardenlinux-amd64.${{ matrix.release }}.qcow2
-        working-directory: gardenlinux/.build/openstack
+      - run: find . -name rootfs.qcow2  -exec cp {} gardenlinux-amd64.${{ matrix.release }}.qcow2 \;
       - run: |
           wget https://dl.min.io/client/mc/release/linux-amd64/mc
           chmod +x mc
           ./mc alias set minio https://minio.services.osism.tech ${{ secrets.MINIO_ACCESS_KEY }} ${{ secrets.MINIO_SECRET_KEY }}
           ./mc cp gardenlinux-amd64.${{ matrix.release }}.qcow2 minio/openstack-image-gardenlinux
           ./mc policy set download minio/openstack-image-gardenlinux/gardenlinux-amd64.${{ matrix.release }}.qcow2
-        working-directory: gardenlinux/.build/openstack/upload
+        working-directory: gardenlinux
         if: github.ref == 'refs/heads/main'
