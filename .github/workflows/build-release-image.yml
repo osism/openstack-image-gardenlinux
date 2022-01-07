@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         release:
-          - "576.1"
+          - "576.2"
 
     steps:
       - uses: actions/checkout@v2
