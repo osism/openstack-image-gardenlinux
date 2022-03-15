@@ -10,6 +10,7 @@ repository, a new image is built and made available once.
 * https://minio.services.osism.tech/openstack-image-gardenlinux/gardenlinux-amd64.576.1.qcow2
 * https://minio.services.osism.tech/openstack-image-gardenlinux/gardenlinux-amd64.576.2.qcow2
 * https://minio.services.osism.tech/openstack-image-gardenlinux/gardenlinux-amd64.576.5.qcow2
+* https://minio.services.osism.tech/openstack-image-gardenlinux/gardenlinux-amd64.576.6.qcow2
 
 Every night a new image is created for the main branch.
 
