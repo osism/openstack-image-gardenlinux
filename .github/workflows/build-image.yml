@@ -1,19 +1,19 @@
 ---
-name: Build release image
+name: Build image
 
 "on":
   workflow_dispatch:
   push:
     paths:
-      - .github/workflows/build-release-image.yml
+      - .github/workflows/build-image.yml
     branches:
       - main
   pull_request:
     paths:
-      - .github/workflows/build-release-image.yml
+      - .github/workflows/build-image.yml
 
 jobs:
-  build-release-image:
+  build-image:
     runs-on: ubuntu-latest
 
     strategy:
