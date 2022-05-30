@@ -1,5 +1,7 @@
 # OpenStack Gardenlinux image
 
+[![Build image](https://github.com/osism/openstack-image-gardenlinux/actions/workflows/build-image.yml/badge.svg)](https://github.com/osism/openstack-image-gardenlinux/actions/workflows/build-image.yml)
+
 [Garden Linux](https://github.com/gardenlinux/gardenlinux) is a Debian derivate that
 aims to provide a small, auditable linux image for most Cloud Providers and Bare Metal.
 
