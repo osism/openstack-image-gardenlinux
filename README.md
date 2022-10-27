@@ -11,6 +11,7 @@ repository, a new image is built and made available once.
 * https://minio.services.osism.tech/openstack-image-gardenlinux/gardenlinux-amd64.576.9.qcow2
 * https://minio.services.osism.tech/openstack-image-gardenlinux/gardenlinux-amd64.576.10.qcow2
 * https://minio.services.osism.tech/openstack-image-gardenlinux/gardenlinux-amd64.576.12.qcow2
+* https://minio.services.osism.tech/openstack-image-gardenlinux/gardenlinux-amd64.934.0.qcow2
 
 ## Commercial support
 
