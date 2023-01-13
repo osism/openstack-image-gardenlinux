@@ -39,6 +39,13 @@ jobs:
         working-directory: gardenlinux
       - run: sha256sum gardenlinux-amd64.${{ matrix.release }}.qcow2 > gardenlinux-amd64.${{ matrix.release }}.qcow2.checksum
         working-directory: gardenlinux
+      - run: curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
+      - run: |
+          find . -name rootfs.raw -exec mv {} rootfs.raw \;
+          mkdir rootfs
+          mount -o loop rootfs.raw rootfs
+          /usr/local/bin/syft rootfs
+        working-directory: gardenlinux
       - run: |
           wget https://dl.min.io/client/mc/release/linux-amd64/mc
           chmod +x mc
