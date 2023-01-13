@@ -19,19 +19,21 @@ jobs:
     strategy:
       matrix:
         release:
-          - "576.12"
+          - "934.2"
 
     steps:
       - uses: actions/checkout@v3
       - uses: docker/setup-qemu-action@v2
       - uses: docker/setup-buildx-action@v2
       - run: git clone --depth 1 --branch ${{ matrix.release }} https://github.com/gardenlinux/gardenlinux.git
-      - name: Disable rkhunter check
-        run: rm features/base/test/rkhunter.chroot
-        working-directory: gardenlinux
       - name: Build image
         shell: 'script -q -e -c "bash {0}"'
-        run: make openstack BUILDKEY=info@osism.tech
+        # GARDENLINUX_BUILD_CRE=docker is required to run docker instead of podman.
+        #
+        # podman with sudo gives the following error on Github Actions:
+        #
+        # sd-bus call: Transport endpoint is not connected
+        run: make openstack BUILDKEY=info@osism.tech GARDENLINUX_BUILD_CRE=docker
         working-directory: gardenlinux
       - run: find . -name rootfs.qcow2  -exec cp {} gardenlinux-amd64.${{ matrix.release }}.qcow2 \;
         working-directory: gardenlinux
