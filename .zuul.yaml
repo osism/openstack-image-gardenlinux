@@ -1,10 +1,21 @@
 ---
-- project:
-    merge-mode: squash-merge
-    default-branch: main
-    check:
-      jobs:
-        - yamllint
+---
+ - job:
+     name: openstack-image-gardenlinux-build
+     parent: base
+     pre-run: playbooks/pre.yml
+     run: playbooks/build.yml
+     required-projects:
+       - name: gardenlinux/gardenlinux
+         override-checkout: "934.6"
+
+ - project:
+     merge-mode: squash-merge
+     default-branch: main
+     check:
+       jobs:
+         - openstack-image-gardenlinux-build
+         - yamllint
     gate:
       jobs:
         - yamllint

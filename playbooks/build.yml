@@ -1,0 +1,17 @@
+---
+- name: Build image
+  hosts: all
+
+  vars:
+    repo_path: "{{ ansible_user_dir }}/src/github.com"
+
+  tasks:
+    - name: Run build script
+      ansible.builtin.shell:
+        executable: /bin/bash
+        chdir: "{{ repo_path }}/gardenlinux/gardenlinux"
+        cmd: |
+          set -e
+          set -x
+
+          make openstack BUILDKEY=info@osism.tech GARDENLINUX_BUILD_CRE=docker

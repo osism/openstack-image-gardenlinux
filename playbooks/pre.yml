@@ -1,0 +1,26 @@
+---
+- name: Pre
+  hosts: all
+
+  roles:
+    - ensure-docker
+    - ensure-pip
+
+  tasks:
+    - name: Run install script
+      ansible.builtin.shell:
+        executable: /bin/bash
+        chdir: "{{ zuul.project.src_dir }}"
+        cmd: |
+          set -e
+          set -x
+
+          while fuser /var/lib/dpkg/lock >/dev/null 2>&1; do sleep 5; done;
+          while fuser /var/lib/dpkg/lock-frontend >/dev/null 2>&1; do sleep 5; done;
+
+          sudo apt-get update
+          sudo apt-get install -y \
+              git \
+              gnupg  \
+              python3-networkx \
+              python3-yaml
