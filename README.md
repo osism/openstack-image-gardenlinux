@@ -8,10 +8,10 @@ aims to provide a small, auditable linux image for most Cloud Providers and Bare
 When a new tag/release is made on the [gardenlinux/gardenlinux](https://github.com/gardenlinux/gardenlinux)
 repository, a new image is built and made available once.
 
-## Current release: 934.5
+## Current release: 934.6
 
-* https://minio.services.osism.tech/openstack-image-gardenlinux/gardenlinux-amd64.934.5.qcow2
-* https://minio.services.osism.tech/openstack-image-gardenlinux/gardenlinux-amd64.934.5.qcow2.checksum
+* https://minio.services.osism.tech/openstack-image-gardenlinux/gardenlinux-amd64.934.6.qcow2
+* https://minio.services.osism.tech/openstack-image-gardenlinux/gardenlinux-amd64.934.6.qcow2.checksum
 
 ## Older releases
 
