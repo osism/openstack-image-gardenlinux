@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         release:
-          - "934.6"
+          - "934.7"
 
     steps:
       - uses: actions/checkout@v3
@@ -27,6 +27,9 @@ jobs:
       - uses: docker/setup-buildx-action@v2
       - run: pip3 install networkx
       - run: git clone --depth 1 --branch ${{ matrix.release }} https://github.com/gardenlinux/gardenlinux.git
+      - name: Overwrite VERSION
+        run: echo ${{ matrix.release }} > VERSION
+        working-directory: gardenlinux
       - name: Build image
         shell: 'script -q -e -c "bash {0}"'
         # GARDENLINUX_BUILD_CRE=docker is required to run docker instead of podman.
@@ -36,6 +39,7 @@ jobs:
         # sd-bus call: Transport endpoint is not connected
         run: make openstack BUILDKEY=info@osism.tech GARDENLINUX_BUILD_CRE=docker
         working-directory: gardenlinux
+      - run: find . -name '*.qcow2'
       - run: find . -name openstack-gardener-amd64-${{ matrix.release }}-local.qcow2 -exec mv {} gardenlinux-amd64.${{ matrix.release }}.qcow2 \;
         working-directory: gardenlinux
       - run: sha256sum gardenlinux-amd64.${{ matrix.release }}.qcow2 > gardenlinux-amd64.${{ matrix.release }}.qcow2.checksum
