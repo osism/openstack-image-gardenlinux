@@ -10,8 +10,8 @@ repository, a new image is built and made available once.
 
 ## Current release: 934.10
 
-* https://minio.services.osism.tech/openstack-image-gardenlinux/gardenlinux-amd64.934.10.qcow2
-* https://minio.services.osism.tech/openstack-image-gardenlinux/gardenlinux-amd64.934.10.qcow2.checksum
+* https://swift.services.a.regiocloud.tech/swift/v1/AUTH_b182637428444b9aa302bb8d5a5a418c/openstack-image-gardenlinux/gardenlinux-amd64.934.10.qcow2
+* https://swift.services.a.regiocloud.tech/swift/v1/AUTH_b182637428444b9aa302bb8d5a5a418c/openstack-image-gardenlinux/gardenlinux-amd64.934.10.qcow2.checksum
 
 ## Older releases
 
@@ -19,31 +19,34 @@ repository, a new image is built and made available once.
 
 #### 934.9
 
-* https://minio.services.osism.tech/openstack-image-gardenlinux/gardenlinux-amd64.934.9.qcow2
-* https://minio.services.osism.tech/openstack-image-gardenlinux/gardenlinux-amd64.934.9.qcow2.checksum
+* https://swift.services.a.regiocloud.tech/swift/v1/AUTH_b182637428444b9aa302bb8d5a5a418c/openstack-image-gardenlinux/gardenlinux-amd64.934.9.qcow2
+* https://swift.services.a.regiocloud.tech/swift/v1/AUTH_b182637428444b9aa302bb8d5a5a418c/openstack-image-gardenlinux/gardenlinux-amd64.934.9.qcow2.checksum
 
 #### 934.8
 
-* https://minio.services.osism.tech/openstack-image-gardenlinux/gardenlinux-amd64.934.8.qcow2
-* https://minio.services.osism.tech/openstack-image-gardenlinux/gardenlinux-amd64.934.8.qcow2.checksum
+* https://swift.services.a.regiocloud.tech/swift/v1/AUTH_b182637428444b9aa302bb8d5a5a418c/openstack-image-gardenlinux/gardenlinux-amd64.934.8.qcow2
+* https://swift.services.a.regiocloud.tech/swift/v1/AUTH_b182637428444b9aa302bb8d5a5a418c/openstack-image-gardenlinux/gardenlinux-amd64.934.8.qcow2.checksum
 
 #### 934.6
 
-* https://minio.services.osism.tech/openstack-image-gardenlinux/gardenlinux-amd64.934.6.qcow2
-* https://minio.services.osism.tech/openstack-image-gardenlinux/gardenlinux-amd64.934.6.qcow2.checksum
+* https://swift.services.a.regiocloud.tech/swift/v1/AUTH_b182637428444b9aa302bb8d5a5a418c/openstack-image-gardenlinux/gardenlinux-amd64.934.6.qcow2
+* https://swift.services.a.regiocloud.tech/swift/v1/AUTH_b182637428444b9aa302bb8d5a5a418c/openstack-image-gardenlinux/gardenlinux-amd64.934.6.qcow2.checksum
 
 #### 934.2
 
-* https://minio.services.osism.tech/openstack-image-gardenlinux/gardenlinux-amd64.934.2.qcow2
-* https://minio.services.osism.tech/openstack-image-gardenlinux/gardenlinux-amd64.934.2.qcow2.checksum
+* https://swift.services.a.regiocloud.tech/swift/v1/AUTH_b182637428444b9aa302bb8d5a5a418c/openstack-image-gardenlinux/gardenlinux-amd64.934.2.qcow2
+* https://swift.services.a.regiocloud.tech/swift/v1/AUTH_b182637428444b9aa302bb8d5a5a418c/openstack-image-gardenlinux/gardenlinux-amd64.934.2.qcow2.checksum
 
 ### 576
 
-* https://minio.services.osism.tech/openstack-image-gardenlinux/gardenlinux-amd64.576.9.qcow2
-* https://minio.services.osism.tech/openstack-image-gardenlinux/gardenlinux-amd64.576.10.qcow2
-* https://minio.services.osism.tech/openstack-image-gardenlinux/gardenlinux-amd64.576.12.qcow2
+#### 576.12
 
-## Commercial support
+* https://swift.services.a.regiocloud.tech/swift/v1/AUTH_b182637428444b9aa302bb8d5a5a418c/openstack-image-gardenlinux/gardenlinux-amd64.576.12.qcow2
 
-We offer commercial support for the images we provide. Send an email to
-[info@osism.tech](mailto:info@osism.tech) for more details on commercial support.
+#### 576.10
+
+* https://swift.services.a.regiocloud.tech/swift/v1/AUTH_b182637428444b9aa302bb8d5a5a418c/openstack-image-gardenlinux/gardenlinux-amd64.576.10.qcow2
+
+#### 576.9
+
+* https://swift.services.a.regiocloud.tech/swift/v1/AUTH_b182637428444b9aa302bb8d5a5a418c/openstack-image-gardenlinux/gardenlinux-amd64.576.9.qcow2
