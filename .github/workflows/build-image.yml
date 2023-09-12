@@ -24,7 +24,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: docker/setup-qemu-action@v2
+      - uses: docker/setup-qemu-action@v3
       - uses: docker/setup-buildx-action@v2
       - run: pip3 install networkx
       - run: git clone --depth 1 --branch ${{ matrix.release }} https://github.com/gardenlinux/gardenlinux.git
