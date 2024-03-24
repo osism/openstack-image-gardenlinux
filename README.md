@@ -1,21 +1,25 @@
 # OpenStack Gardenlinux image
 
-**This repository is archived. Use the release artifacts from [gardenlinux/gardenlinux](https://github.com/gardenlinux/gardenlinux) in the future.**
-
 [Garden Linux](https://github.com/gardenlinux/gardenlinux) is a Debian derivate that
 aims to provide a small, auditable linux image for most Cloud Providers and Bare Metal.
 
 When a new tag/release is made on the [gardenlinux/gardenlinux](https://github.com/gardenlinux/gardenlinux)
 repository, a new image is built and made available once.
 
-## Current release: 934.11
+## Current release: 1443.0
 
-* https://swift.services.a.regiocloud.tech/swift/v1/AUTH_b182637428444b9aa302bb8d5a5a418c/openstack-image-gardenlinux/gardenlinux-amd64.934.11.qcow2
-* https://swift.services.a.regiocloud.tech/swift/v1/AUTH_b182637428444b9aa302bb8d5a5a418c/openstack-image-gardenlinux/gardenlinux-amd64.934.11.qcow2.checksum
+* https://swift.services.a.regiocloud.tech/swift/v1/AUTH_b182637428444b9aa302bb8d5a5a418c/openstack-image-gardenlinux/gardenlinux-amd64.1443.0.qcow2
+* https://swift.services.a.regiocloud.tech/swift/v1/AUTH_b182637428444b9aa302bb8d5a5a418c/openstack-image-gardenlinux/gardenlinux-amd64.1443.0.qcow2.checksum
 
 ## Older releases
 
 ### 934
+
+## 934.11
+
+* https://swift.services.a.regiocloud.tech/swift/v1/AUTH_b182637428444b9aa302bb8d5a5a418c/openstack-image-gardenlinux/gardenlinux-amd64.934.11.qcow2
+* https://swift.services.a.regiocloud.tech/swift/v1/AUTH_b182637428444b9aa302bb8d5a5a418c/openstack-image-gardenlinux/gardenlinux-amd64.934.11.qcow2.checksum
+
 
 ## 934.10
 
@@ -41,17 +45,3 @@ repository, a new image is built and made available once.
 
 * https://swift.services.a.regiocloud.tech/swift/v1/AUTH_b182637428444b9aa302bb8d5a5a418c/openstack-image-gardenlinux/gardenlinux-amd64.934.2.qcow2
 * https://swift.services.a.regiocloud.tech/swift/v1/AUTH_b182637428444b9aa302bb8d5a5a418c/openstack-image-gardenlinux/gardenlinux-amd64.934.2.qcow2.checksum
-
-### 576
-
-#### 576.12
-
-* https://swift.services.a.regiocloud.tech/swift/v1/AUTH_b182637428444b9aa302bb8d5a5a418c/openstack-image-gardenlinux/gardenlinux-amd64.576.12.qcow2
-
-#### 576.10
-
-* https://swift.services.a.regiocloud.tech/swift/v1/AUTH_b182637428444b9aa302bb8d5a5a418c/openstack-image-gardenlinux/gardenlinux-amd64.576.10.qcow2
-
-#### 576.9
-
-* https://swift.services.a.regiocloud.tech/swift/v1/AUTH_b182637428444b9aa302bb8d5a5a418c/openstack-image-gardenlinux/gardenlinux-amd64.576.9.qcow2
